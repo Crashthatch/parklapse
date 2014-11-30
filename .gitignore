@@ -1,0 +1,7 @@
+
+*.scssc
+vendor/*
+.vagrant/*
+.idea/*
+composer.lock
+composer.phar

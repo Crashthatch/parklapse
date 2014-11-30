@@ -1,0 +1,10 @@
+{
+  "require": {
+
+  },
+  "repositories": [
+    {
+    }
+  ],
+  "minimum-stability": "dev"
+}

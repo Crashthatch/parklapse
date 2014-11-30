@@ -1,0 +1,407 @@
+// Imports //
+
+@import "normalize.scss";
+@import "fontawesome/font-awesome.scss";
+@import "jquery-ui/jquery-ui.scss";
+
+
+// Variables //
+$pink:        #C85868;
+$purple:      #90556B;
+$blue:        #2E4859;
+$green:       #6DA59C;
+$lightgreen:  #9BBCB1;
+$white:       #fff;
+$black:       #000;
+
+$icons: "FontAwesome";
+
+
+// Mixins //
+
+@mixin border-radius($radius: 4px) {
+  -webkit-border-radius: $radius;
+     -moz-border-radius: $radius;
+          border-radius: $radius;
+}
+
+// Clearfix
+.clearfix:before,
+.clearfix:after {
+    content:"";
+    display:table;
+}
+.clearfix:after {
+    clear:both;
+}
+.clearfix {
+    *zoom:1;
+}
+
+
+// General Styles //
+
+html, body {
+  width: 100%;
+  min-height: 100%;
+  margin: 0px;
+  padding: 0px;
+}
+
+body {
+  background: $blue;
+  color: $white;
+  font-size: 17px;
+  line-height: 1.2;
+}
+
+* { 
+  -webkit-box-sizing: border-box; 
+  -moz-box-sizing:    border-box; 
+  box-sizing:         border-box; 
+}
+
+img {
+  max-width: 100%;
+  height: auto;
+}
+
+a {
+  color: $white;
+  text-decoration: none;
+
+  &:hover {
+    color: $green;
+  }
+}
+
+h2 {
+  margin: 0 0 10px 0;
+}
+
+
+// Header
+header {
+  padding: 15px;
+  position: relative;
+
+  // Date Picker
+  #date-picker {
+    margin-top: 15px;
+
+    option {
+      pointer: cursor;
+    }
+  }
+
+  // Slider
+  #airlapse-control {
+    padding-top: 37px;
+
+    #slider {
+      margin: 15px auto 0; 
+      max-width: 98%;
+    }
+  }
+
+  label {
+    margin-right: 8px;
+    color: $lightgreen;
+    cursor: pointer;
+  }
+
+  // Play Button
+  #play-button {
+    @extend .clearfix;
+
+    #logo {
+      display: block;
+      margin: 0 auto 15px;
+    }
+
+    // Play Icon & Text
+    a#play-icon {
+      height: 50%;
+      display: block;
+      @include border-radius;
+      background: $lightgreen;
+      font-family: $icons;
+      font-size: 30px;
+      line-height: 2.1;
+      text-align: center;
+      vertical-align: middle;
+      color: $white;
+
+      &.playing {
+        &:before {
+          color: $white;
+          content: "\f04e";
+        }
+      }
+
+      &.playingfast {
+        &:before {
+          color: $white;
+          content: "\f04d";
+        }
+      }
+
+      &.stopped {
+        &:before {
+          color: $white;
+          content: "\f04b";
+        }
+      }
+
+      &:hover {
+        background: $green;
+        color: $blue;
+      }
+
+      &:active {
+        background: darken($green, 15%);
+        color: $blue;
+      }
+    }
+  }
+}
+
+// AirLapse Key
+#airlapse-key {
+  z-index: 10;
+  bottom: 10px;
+  left: 10px;
+  @include border-radius;
+  background: $white;
+  margin: 0 10px;
+  padding: 5px 20px;
+  color: $black;
+
+  p {
+    span {
+      display: block;
+      @include border-radius(10px);
+      width: 20px;
+      height: 20px;
+      float: left;
+      margin: 0 8px 0 0;
+      opacity: 0.3;
+    }
+  }
+
+  p.nox {
+    span {
+      background: black;
+    }
+  }
+
+  p.pm10 {
+    span {
+      background: red;
+    }
+  }
+
+  p.o3 {
+    span {
+      background: orange;
+    }
+  }
+
+  p.co {
+    span {
+      background: blue;
+    }
+  }
+}
+
+// AirLapse Twitter
+#airlapse-twitter {
+  position: fixed;
+  z-index: 10;
+  bottom: 10px;
+  right: 10px;
+  @include border-radius;
+  padding: 0 20px;
+  font-size: 30px;
+  
+  a {
+    color: $green;
+
+    &:hover {
+      color: $black;
+    }
+  }
+}
+
+// Leaflet Map
+#map {
+  position: absolute;
+  top: 645px;
+  min-height: 480px;
+  bottom: 0; 
+  width: 100%;
+  margin: 0px;
+  padding: 0px;
+}
+
+
+// Form Inputs
+select {
+  cursor: pointer;
+  color: $black;
+
+  option {
+    color: $black;
+  }
+}
+
+// Date Range Input
+input[type="text"]#date-range {
+  width: 200px;
+  background: none;
+  border: none;
+  color: $white;
+}
+
+// Time Range Input
+input[type="text"]#time-range {
+  width: 100%;
+  background: none;
+  border: none;
+  margin-top: 28px;
+  color: $white;
+  font-size: 65px;
+  text-align: center;
+}
+
+
+// 768 and up
+@media only screen and (min-width: 768px) {
+
+  // Grid //
+  .onecol    { width: 5.801104972%;  }
+  .twocol    { width: 14.364640883%; }
+  .threecol  { width: 22.928176794%; }
+  .fourcol   { width: 31.491712705%; }
+  .fivecol   { width: 40.055248616%; }
+  .sixcol    { width: 48.618784527%; }
+  .sevencol  { width: 57.182320438000005%; }
+  .eightcol  { width: 65.74585634900001%; }
+  .ninecol   { width: 74.30939226%; }
+  .tencol    { width: 82.87292817100001%; }
+  .elevencol { width: 91.436464082%; }
+  .twelvecol { width: 99.999999993%; }
+
+  .onecol, .twocol, .threecol, .fourcol, .fivecol, .sixcol, .sevencol, .eightcol, .ninecol, .tencol, .elevencol, .twelvecol {
+    position: relative;
+    float: left;
+    margin-left: 2.762430939%;
+  }
+
+  @mixin first {
+    float: left;
+    margin-left: 0;
+  }
+  .first {
+    float: left;
+    margin-left: 0;
+  }
+
+  @mixin last {
+    float: right;
+  }
+  .last {
+    float: right;
+  }
+
+  // Time Range Input
+  input[type="text"]#time-range {
+    @extend .twocol;
+  }
+
+  // Date Pickers
+  #header-dates {
+    @extend .sevencol;
+  }
+
+  header {
+    #date-picker {
+      margin-top: 5px;
+    }
+
+    #airlapse-control {
+      padding-top: 12px;
+    }
+  }
+
+  // Timecode
+  input[type="text"]#time-range {
+    @extend .threecol;
+  }
+
+  // Map
+  #map {
+    top: 147px;
+  }
+
+  // AirLapse Key
+  #airlapse-key {
+    position: fixed;
+    margin: 0 0 0 0;
+  }
+}
+
+// 1024 and up
+@media only screen and (min-width: 1024px) {
+
+  header {
+
+    // Slider
+    #airlapse-control {
+      margin-top: 163pxpx;
+    }
+  }
+
+  // Map
+  #map {
+    top: 159px;
+  }
+}
+
+// 1325 and up
+@media only screen and (min-width: 1325px) {
+  
+  header {
+
+    // Date Picker
+    #date-picker {
+      margin-top: 16px;
+    }
+
+    // Slider
+    #airlapse-control {
+     margin-top: 24px;
+    }
+  }
+  
+  #date-from {
+    width: 48.618784527%;
+    float: left;
+    margin-left: 0;
+  }
+
+  #date-to {
+    width: 48.618784527%;
+    float: right;
+  }
+
+  // Date Pickers
+  #header-dates {
+    width: 65.74585634900001%;
+  }
+
+  // Timecode
+  input[type="text"]#time-range {
+    width: 14.364640883%;
+  }
+}
